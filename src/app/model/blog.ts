@@ -4,4 +4,5 @@ export interface Blog {
   date: Date;
   imgUrl: string;
   description: string;
+  rating: number;
 }

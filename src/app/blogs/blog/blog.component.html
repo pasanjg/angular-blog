@@ -1,12 +1,23 @@
 <div class="blog-card">
-  <h5 class="blog-title">
+  <h5 class="blog-title d-flex justify-content-between align-items-center">
     {{ blog.title }}
+    <i class="fa fa-trash text-danger" (click)="removeBlog(blog.id)"></i>
   </h5>
   <span> {{ blog.date | date }} </span>
   <div class="blog-cover-image">
-    <img src="{{ blog.imgUrl }}" alt="blog-img" />
+    <a [routerLink]="['/view-blog', blog.id]">
+      <img src="{{ blog.imgUrl }}" alt="blog-img" />
+    </a>
   </div>
   <p class="blog-desc">
     {{ blog.description }}
   </p>
+  <hr>
+  <p *ngIf="blog.rating; else elseBlock">
+    <span class="rating">{{blog.rating}}</span>
+    <i class="fa fa-star text-warning"></i>
+  </p>
+  <ng-template #elseBlock>
+    <p class="rating text-muted">Not yet rated</p>
+  </ng-template>
 </div>

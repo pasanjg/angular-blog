@@ -1,18 +1,36 @@
+a {
+  color: black;
+}
+
 .blog-card {
   display: inline-block;
   width: 400px;
-  height: 400px;
+  height: auto;
   cursor: pointer;
-  padding: 8px;
+  padding: 16px;
   box-shadow: 2px 0px 13px 7px rgba(0, 0, 0, 0.2);
   margin: 40px;
+
+  .rating {
+    font-size: 20px;
+    margin-right: 5px;
+  }
+
+  .fa {
+    font-size: 20px;
+  }
+
+  .fa-trash {
+    visibility: hidden;
+    transition: all 0.2s ease-in-out;
+  }
 
   span {
     color: grey;
   }
 
   img {
-    width: 384px;
+    width: 100%;
   }
 
   p {
@@ -20,5 +38,11 @@
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  &:hover {
+    .fa-trash {
+      visibility: visible;
+    }
   }
 }

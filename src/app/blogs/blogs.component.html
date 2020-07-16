@@ -1,7 +1,9 @@
 <div class="container write-post d-flex justify-content-end">
-  <button type="button" class="btn btn-outline-dark">
-    Write a blog
-  </button>
+  <a href="/create-blog">
+    <button type="button" class="btn btn-outline-dark">
+      Write a blog
+    </button>
+  </a>
 </div>
 <div class="blog-post">
   <app-blog *ngFor="let blog of blogs" [blog]="blog"></app-blog>

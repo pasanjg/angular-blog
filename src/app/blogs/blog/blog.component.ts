@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { BlogService } from 'src/app/service/blog.service';
 
 @Component({
   selector: 'app-blog',
@@ -8,7 +9,11 @@ import { Component, OnInit, Input } from '@angular/core';
 export class BlogComponent implements OnInit {
   @Input() blog;
 
-  constructor() {}
+  constructor(private blogService: BlogService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
+
+  removeBlog(blogId) {
+    this.blogService.removeFromId(blogId);
+  }
 }
