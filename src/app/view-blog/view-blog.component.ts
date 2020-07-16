@@ -9,11 +9,14 @@ import { BlogService } from '../service/blog.service';
 })
 export class ViewBlogComponent implements OnInit {
   blog;
+  rating = 0;
 
   constructor(
     private route: ActivatedRoute,
     private blogService: BlogService
-  ) { }
+  ) {
+
+  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {

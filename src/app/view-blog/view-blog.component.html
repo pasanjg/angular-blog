@@ -4,21 +4,7 @@
         <h4>{{ blog.date | date }}</h4>
     </div>
     <img [src]="blog.imgUrl" height="600" alt="">
-    <div class="rating d-flex justify-content-around align-items-center mt-3">
-        <p *ngIf="blog.rating; else elseBlock">
-            {{blog.rating}}
-            <i class="fa fa-star text-warning ml-2"></i>
-            <i class="fa fa-star text-warning ml-2"></i>
-            <i class="fa fa-star text-warning ml-2"></i>
-            <i class="fa fa-star text-warning ml-2"></i>
-            <i class="fa fa-star text-warning ml-2"></i>
-            <i class="fa fa-star text-warning ml-2"></i>
-        </p>
-        <ng-template #elseBlock>
-            <p class="rating text-muted">Not yet rated</p>
-        </ng-template>
-        <!-- <i class="fa fa-trash text-danger"></i> -->
-    </div>
+    <app-star-rating [blog]="blog"></app-star-rating>
 </div>
 <br>
 <p>{{blog.description}}</p>

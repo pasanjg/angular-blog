@@ -13,7 +13,7 @@ export class BlogComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  removeBlog(blogId) {
-    this.blogService.removeFromId(blogId);
+  removeBlog(blog) {
+    this.blogService.removeFromId(blog);
   }
 }

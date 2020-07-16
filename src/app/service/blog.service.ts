@@ -44,8 +44,15 @@ export class BlogService {
     return this.blogs[blogId - 1];
   }
 
-  removeFromId(blogId) {
-    this.blogs.splice(blogId - 1, 1);
-    console.log(blogId)
+  removeFromId(blog) {
+    const index: number = this.blogs.indexOf(blog);
+    if (index !== -1) {
+      this.blogs.splice(index, 1);
+    }
   }
+
+  setRating(blogId, rating: number) {
+    this.blogs.find(blog => blog.id == blogId).rating = rating;
+  }
+
 }

@@ -1,7 +1,7 @@
 <div class="blog-card">
   <h5 class="blog-title d-flex justify-content-between align-items-center">
     {{ blog.title }}
-    <i class="fa fa-trash text-danger" (click)="removeBlog(blog.id)"></i>
+    <i class="fa fa-trash text-danger" (click)="removeBlog(blog)"></i>
   </h5>
   <span> {{ blog.date | date }} </span>
   <div class="blog-cover-image">
