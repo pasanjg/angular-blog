@@ -16,19 +16,21 @@ export class BlogsComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  deleteBlog(blog: Blog) {
-    this.blogsService.blogs = this.blogsService.blogs.filter((b) => {
-      if (b !== blog) {
-        return b;
-      }
-    });
-    console.log(this.blogsService.blogs)
-  }
+  // deleteBlog(blog: Blog) {
+  //   this.blogsService.blogs = this.blogsService.blogs.filter((b) => {
+  //     if (b !== blog) {
+  //       return b;
+  //     }
+  //   });
+
+  //   console.log(this.blogsService.blogs)
+  // }
 
   onClickBlog(id: number) {
-    this.router.navigate(['view-blog',id]);
+    this.router.navigate(['view-blog', id]);
   }
-  onclickCreate(){
+
+  onclickCreate() {
     this.router.navigate(['create-blog']);
   }
 }

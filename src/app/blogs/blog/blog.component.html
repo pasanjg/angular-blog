@@ -8,10 +8,12 @@
   </div>
   <p class="blog-desc">
     {{ blog.description }}
-  </p>  <div class="blog-footer">
-  <button class="btn btn-outline-danger btn-del" (click)="deleteBlog();$event.stopPropagation()" >Delete</button>
-  <ng-container *ngFor="let i of rating">
-  <i class="fa fa-star" [ngClass]="{'selected-star': blog.rating>= i}" (click)="onClickStar(i);$event.stopPropagation()"></i>
-</ng-container>
-</div>
+  </p>
+  <div class="blog-footer">
+    <button class="btn btn-outline-danger btn-del" (click)="deleteBlog(blog);$event.stopPropagation()">Delete</button>
+    <ng-container *ngFor="let i of rating">
+      <i class="fa fa-star" [ngClass]="{'selected-star': blog.rating>= i}"
+        (click)="onClickStar(i);$event.stopPropagation()"></i>
+    </ng-container>
+  </div>
 </div>

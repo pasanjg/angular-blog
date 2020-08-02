@@ -51,8 +51,14 @@ export class BlogService {
 
   getBlogs() {
     this.http.get('https://run.mocky.io/v3/40d1dd50-1cc9-42b0-afdd-0d75c7186fe3').pipe(catchError(this.handleError)).subscribe((val: Blog[]) => {
-      this.blogs=val;
+      this.blogs = val;
     });
+  }
+
+  deteleBlog(blog) {
+    var index = this.blogs.indexOf(blog);
+    this.blogs.splice(index, 1);
+    console.log(blog)
   }
 
   private handleError(error: Response | any) {
