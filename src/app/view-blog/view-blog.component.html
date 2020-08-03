@@ -1,14 +1,17 @@
-<div class="container">
+<div *ngIf="blogService.getBlog(blogId) != null; else emtBlog" class="container">
     <div class="top-header d-flex justify-content-center m-2">
-        <h1>{{ currentBlog.title }}</h1>
+        <h1>{{ blogService.getBlog(blogId).title }}</h1>
     </div>
     <div class="div d-flex justify-content-end m-2">
-        <span> {{ currentBlog.date | date }} </span>
+        <span> {{ blogService.getBlog(blogId).date | date }} </span>
     </div>
     <div class="image-container d-flex justify-content-center mb-5">
-        <img [src]="currentBlog.imgUrl" alt="blog-cover">
+        <img [src]="blogService.getBlog(blogId).imgUrl" alt="blog-cover">
     </div>
     <div class="desc-container">
-        <p>{{ currentBlog.description}} </p>
+        <p>{{ blogService.getBlog(blogId).description}} </p>
     </div>
 </div>
+<ng-template #emtBlog>
+    No blogs to view
+</ng-template>

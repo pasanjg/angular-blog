@@ -9,13 +9,13 @@ import { Blog } from '../model/blog';
   styleUrls: ['./view-blog.component.scss']
 })
 export class ViewBlogComponent implements OnInit {
-  currentBlog: Blog;
-  constructor(private activeRoter: ActivatedRoute, private blogService: BlogService) { }
+  currentBlog: Blog = null;
+  blogId: number;
+  constructor(private activeRoter: ActivatedRoute, public blogService: BlogService) { }
 
   ngOnInit(): void {
-    const id = +this.activeRoter.snapshot.paramMap.get('id');
-    this.currentBlog = this.blogService.blogs.find(blog => blog.id === id);
-    console.log(this.currentBlog);
+    const routeParams = this.activeRoter.snapshot.params;
+    this.blogId = routeParams.id;
   }
 
 }

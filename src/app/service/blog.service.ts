@@ -55,6 +55,17 @@ export class BlogService {
     });
   }
 
+  getBlog(id): Blog {
+    var blog;
+    this.blogs.forEach((currentBlog: Blog) => {
+      if (id == currentBlog.id) {
+        console.log(currentBlog)
+        return blog = currentBlog;
+      }
+    });
+    return blog;
+  }
+
   deteleBlog(blog) {
     var index = this.blogs.indexOf(blog);
     this.blogs.splice(index, 1);
