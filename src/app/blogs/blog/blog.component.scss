@@ -7,6 +7,10 @@
   box-shadow: 2px 0px 13px 7px rgba(0, 0, 0, 0.2);
   margin: 40px;
 
+  .btn-edit {
+    font-size: 20px;
+  }
+
   span {
     color: grey;
   }
@@ -21,10 +25,10 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  .btn-del{
-    float: right
+  .btn-del {
+    float: right;
   }
-  .selected-star{
+  .selected-star {
     color: #ffc107;
   }
 }

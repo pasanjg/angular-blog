@@ -26,7 +26,12 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot([{ path: 'create-blog', component: CreateBlogComponent },{ path: 'view-blog/:id', component: ViewBlogComponent }, { path: '', component: BlogsComponent }])
+    RouterModule.forRoot([
+      { path: 'create-blog', component: CreateBlogComponent },
+      { path: 'create-blog/:id', component: CreateBlogComponent },
+      { path: 'view-blog/:id', component: ViewBlogComponent },
+      { path: '', component: BlogsComponent },
+    ])
     // AppRoutingModule
   ],
   providers: [],

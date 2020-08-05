@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { BlogService } from '../service/blog.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Blog } from '../model/blog';
 
 @Component({
   selector: 'app-create-blog',
@@ -17,19 +18,41 @@ export class CreateBlogComponent implements OnInit {
     date: new FormControl(),
     imgUrl: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required)
-  })
-  constructor(private blogService: BlogService, private router: Router) { }
+  });
+
+  blogId: number = null;
+  blog: Blog;
+  constructor(private blogService: BlogService, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    const routeParams = this.activatedRoute.snapshot.params;
+    this.blogId = routeParams.id;
+    this.blog = this.blogService.getBlog(this.blogId);
+    this.setUpdateValues();
+  }
+
+  setUpdateValues() {
+    if (this.blogId != null) {
+      this.blogForm.controls.id.setValue(this.blogId);
+      this.blogForm.controls.title.setValue(this.blog.title);
+      this.blogForm.controls.imgUrl.setValue(this.blog.imgUrl);
+      this.blogForm.controls.description.setValue(this.blog.description);
+      this.blogForm.controls.date.setValue(this.blog.date);
+    }
   }
 
   onFormSubmit() {
     if (this.blogForm.valid) {
-      this.blogForm.controls.id.setValue(this.getId() + 1);
-      this.blogForm.controls.date.setValue(new Date());
-      this.blogService.addBlog(this.blogForm.value)
-      this.router.navigate([''])
-    }else{
+      if (this.blogId != null) {
+        this.blogService.updateBlog(this.blogForm.value)
+        this.router.navigate([''])
+      } else {
+        this.blogForm.controls.id.setValue(this.getId() + 1);
+        this.blogForm.controls.date.setValue(new Date());
+        this.blogService.addBlog(this.blogForm.value)
+        this.router.navigate([''])
+      }
+    } else {
       console.log(this.blogForm.valid)
     }
 

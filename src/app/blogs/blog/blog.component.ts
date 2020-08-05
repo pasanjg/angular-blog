@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { BlogService } from 'src/app/service/blog.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-blog',
@@ -8,24 +9,26 @@ import { BlogService } from 'src/app/service/blog.service';
 })
 export class BlogComponent implements OnInit {
   @Input() blog;
-  // @Output() delectBlog = new EventEmitter();
+
   rating = [1, 2, 3, 4, 5];
 
-  constructor(private blogService: BlogService) { }
+  constructor(private blogService: BlogService, private router: Router) { }
 
   ngOnInit(): void { }
 
+  editBlog(id: number) {
+    this.router.navigate(['create-blog', id]);
+  }
+
   deleteBlog(blog) {
-    // this.delectBlog.emit();
-    console.log("DELETE");
     this.blogService.deteleBlog(blog);
   }
+
   onClickStar(i: number) {
     if (this.blog.rating === i) {
       this.blog.rating = 0;
     } else {
       this.blog.rating = i;
     }
-    console.log(i)
   }
 }

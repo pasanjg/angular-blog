@@ -20,14 +20,15 @@
                     <textarea formControlName="description" class="form-control" id="description"></textarea>
 
                 </div>
-                <button type="submit" class="btn btn-outline-dark btn-md mt-4 ce-btn" [disabled]="!this.blogForm.valid">Publish</button>
+                <button type="submit" class="btn btn-outline-dark btn-md mt-4 ce-btn"
+                    [disabled]="!this.blogForm.valid">Publish</button>
             </form>
 
         </div>
         <div class="image-preview m-3">
             <img *ngIf="imageUrl; else noImage" src="{{ imageUrl }}" alt="blog-cover" />
             <ng-template #noImage>
-                
+
             </ng-template>
+        </div>
     </div>
-</div>

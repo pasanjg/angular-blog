@@ -11,6 +11,7 @@ import { Blog } from '../model/blog';
 export class ViewBlogComponent implements OnInit {
   currentBlog: Blog = null;
   blogId: number;
+
   constructor(private activeRoter: ActivatedRoute, public blogService: BlogService) { }
 
   ngOnInit(): void {

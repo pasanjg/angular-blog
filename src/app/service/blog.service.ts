@@ -49,6 +49,11 @@ export class BlogService {
     console.log(this.blogs)
   }
 
+  updateBlog(blog: Blog) {
+    let index = this.blogs.findIndex(item => item.id == blog.id);
+    this.blogs[index] = blog;
+  }
+
   getBlogs() {
     this.http.get('https://run.mocky.io/v3/40d1dd50-1cc9-42b0-afdd-0d75c7186fe3').pipe(catchError(this.handleError)).subscribe((val: Blog[]) => {
       this.blogs = val;
